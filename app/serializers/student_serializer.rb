@@ -1,3 +1,8 @@
 class StudentSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  require "date"
+  attributes :id, :name, :recently_joined
+
+  def recently_joined
+      Date.today != object.created_at
+  end
 end
